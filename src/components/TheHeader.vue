@@ -1,28 +1,23 @@
 <template>
     <header class="header">
         <div>
+            <div>
+                {{ fullName }}
+            </div>
+        </div>
+
+        <div v-for="(todo, index) in todos" :key="index">
             <input 
-            v-model="name"
-            type="text"><br />
-            {{ name }}
-            <br />
+            v-model="todo.completed"
+            type="checkbox"
+            >
+            <span>{{ todo.title }}</span>
         </div>
-        <img v-bind:src="imgUrl" v-bind:alt="imgAlt">
-        <div v-for="obj in todos" v-bind:key="obj.id" class="todo-item">
-            {{ obj.id }}
-            {{ obj.title }}
-            {{ obj.completed }}
-        </div>
+
         <div>
             <button
             v-on:click="onClick()"
             >Butão</button>
-        </div>
-        <div
-        @mouseover="onMouseOver"
-        @mouseout="onMouseOut"
-        >onMouseOver
-            
         </div>
     </header>
 </template>
@@ -32,21 +27,22 @@ export default {
     name: 'App',
     data(){
         return{
-            name: 'Thiago',
-            imgUrl: 'https://placehold.co/600x400',
-            imgAlt: 'Foto 600x400',
+            user: {
+                first_name: 'Thiago',
+                last_name: 'Santos Pinheiro Costa'
+            },
             todos: [
                 {
                     "userId": 1,
                     "id": 1,
                     "title": "delectus aut autem",
-                    "completed": false
+                    "completed": true
                 },
                 {
                     "userId": 1,
                     "id": 2,
                     "title": "quis ut nam facilis et officia qui",
-                    "completed": false
+                    "completed": true
                 },
                 {
                     "userId": 1,
@@ -70,15 +66,19 @@ export default {
         }
     },
 
+    computed: {
+        fullName(){
+            return `${this.user.first_name} ${this.user.last_name}`
+        },
+
+        completoTodos(){
+            return this.todos.filter(todo => !todo.completed)
+        }
+    },
+
     methods: {
         onClick(){
             console.log('teste')
-        },
-        onMouseOver(){
-            console.log('onMouseOver')
-        },
-        onMouseOut(){
-            console.log("onMouseOut")
         }
     }
 

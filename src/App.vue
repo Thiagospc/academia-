@@ -3,6 +3,10 @@
     <TheHeader 
       v-show="showHeader"
     />
+    <button @click="anotacoes = !anotacoes">Ativar e desativar Anotações</button>
+    <anotacoes 
+      v-show="anotacoes"
+    />
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
@@ -11,16 +15,19 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import TheHeader from './components/TheHeader'
+import anotacoes from '../anotacoes.vue'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld,
-    TheHeader
+    TheHeader,
+    anotacoes
   },
   data(){
     return{
-      showHeader: true
+      showHeader: true,
+      anotacoes: true
     }
   }
 }
