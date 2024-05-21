@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <h1>Anotações</h1>
         {{ teste }}
@@ -86,4 +86,4 @@ export default {
 
 <style>
 
-</style>
+</style> -->
