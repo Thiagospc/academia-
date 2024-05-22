@@ -18,7 +18,6 @@ import TodoSpinner from './TodoSpinner.vue'
 import TodoForm from './TodoForm.vue'
 import TodoItems from './TodoItems.vue'
 import TodoEmpty from './TodoEmpty.vue'
-import axios from 'axios'
 
 export default {
   name: 'TodoIst',
@@ -35,13 +34,10 @@ export default {
   },
   // jogando minha api para o vuex
   async created(){
-    this.todos = await axios.get('http://localhost:3000/todos')
-      .then((response) => {
-        this.$store.commit('storeTodos', response.data)
-      })
-      .finally(() => {
-        this.loading = false
-      })
+    this.loading = true
+    this.$store.dispatch('getTodos').finally(() => {
+      this.loading = false;
+    })
   }
 }
 </script>
