@@ -2,10 +2,23 @@
 
 Projeto voltado para administração de fichas de treinos.
 
+## Comandos para instalar
+- Tenha o node v19.0.0 instalado.
+
+## instale o cliente vue
+- npm install -g @vue/cli
+- npm install @vue/cli-service
+
 ## Project setup
 ```
 npm install
 ```
+## Comandos de extensões
+- npm install -g @vue/cli
+- npm install -g json-server
+- json-server --watch database.json 
+- npm install axios
+
 
 ### Compiles and hot-reloads for development
 ```
@@ -25,13 +38,6 @@ npm run lint --fix
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## Comandos para instalar
-- Tenha o node v19.0.0 instalado.
-- npm install -g @vue/cli
-- npm install -g json-server
-- json-server --watch database.json 
-- npm install axios
 
 ## Estudar 
 - Tailwind css.
