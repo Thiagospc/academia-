@@ -24,7 +24,16 @@ export default{
     },
     methods: {
         addTodo() {
-            console.log("here", this.title)
+            if(!this.title){
+                return;
+            }
+
+            this.$store.dispatch('addTodo', {
+                title: this.title,
+                completeled: false
+            }).finally(() => {
+                this.title = ''
+            })
         }
     },
 }
