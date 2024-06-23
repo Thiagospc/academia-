@@ -4,7 +4,13 @@
             <div class="flex items-center justify-center mr-2">
                 
                 <!-- Butão de concluído -->
-                <button class="text-gray-400">
+                <button :class="{
+                    'text-green-600': isCompleted,
+                    'text-gray-400': !isCompleted
+                    }"
+                    @click="onCheckClick"
+                
+                >
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
@@ -17,8 +23,10 @@
                 <input 
                     type="text" 
                     placeholder="Digite a sua tarefa" 
-                    :value="todo.title" 
-                    class="bg-gray-300 placeholder-gray-500 text-gray-700 font-light focus:outline-none block w-full appearance-none leading-normal mr-3">
+                    :value="title" 
+                    class="bg-gray-300 placeholder-gray-500 text-gray-700 font-light focus:outline-none block w-full appearance-none leading-normal mr-3"
+                    @keyup.enter="onTitleChange"
+                    >
             </div>
 
             <div class="ml-auto flex items-center justify-center">
@@ -49,6 +57,37 @@ export default{
             type: Object,
             default: () => ({})
         }
-    }
+    },
+    data() {
+        return {
+            title: this.todo.title,
+            isCompleted: this.todo.completed
+        }
+    },
+    methods: {
+        onTitleChange($evt){
+            this.title = $evt.target.value
+
+            if (!this.title){
+                return
+            }
+
+            this.updateTodo()
+        },
+        updateTodo(){
+            const payload = {
+                id: this.todo.id,
+                data: {
+                    title: this.title,
+                    completed: this.isCompleted
+                }
+            }
+            this.$store.dispatch('updateTodo', payload)
+        },
+        onCheckClick(){
+            this.isCompleted = !this.isCompleted,
+            this.updateTodo()
+        }
+    },
 }
 </script>
