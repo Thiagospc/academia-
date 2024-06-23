@@ -7,14 +7,14 @@ Projeto voltado para administração de fichas de treinos.
 
 ## instale o cliente vue
 - npm install -g @vue/cli
-- npm install @vue/cli-service
+
 
 ## Project setup
 ```
 npm install
 ```
 ## Comandos de extensões
-- npm install -g @vue/cli
+- npm install @vue/cli-service
 - npm install -g json-server
 - json-server --watch database.json 
 - npm install axios
