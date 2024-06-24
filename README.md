@@ -14,14 +14,21 @@ Projeto voltado para administração de fichas de treinos.
 npm install
 ```
 ## Comandos de extensões
-- npm install @vue/cli-service
-- npm install -g json-server
-- json-server --watch database.json 
-- npm install axios
-
-
-### Compiles and hot-reloads for development
 ```
+npm install @vue/cli-service
+npm install -g json-server
+npm install axios
+```
+
+## comando para iniciar o backend
+```
+json-server --watch database.json 
+```
+
+
+### Comando para inciar o frontend
+```
+cd src
 npm run serve
 ```
 
